@@ -94,21 +94,6 @@
                         <i class="fas fa-th"></i>
                     </button>
                 </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
-                            v-bind:title="lang.btn.fullScreen"
-                            v-bind:class="{ active: fullScreen }"
-                            v-on:click="screenToggle">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-secondary"
-                            v-bind:title="lang.btn.about"
-                            v-on:click="showModal('About')">
-                        <i class="fas fa-question"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
