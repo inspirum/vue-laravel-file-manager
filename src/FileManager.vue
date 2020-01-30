@@ -248,8 +248,8 @@ export default {
       position: relative;
       padding-top: 1rem;
       padding-bottom: 1rem;
-      border-top: 1px solid #6d757d;
-      border-bottom: 1px solid #6d757d;
+      border-top: 1px solid #DCDFE6;
+      border-bottom: 1px solid #DCDFE6;
     }
 
     .unselectable {
