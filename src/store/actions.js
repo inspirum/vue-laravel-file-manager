@@ -57,6 +57,8 @@ export default {
           commit('left/addToHistory', leftPath);
         }
 
+        document.getElementsByClassName('fm-body')[0].style.height = window.innerHeight - 150 + 'px'
+        
         dispatch('getLoadContent', {
           manager: 'left',
           disk: leftDisk,
