@@ -151,7 +151,6 @@ export default {
         margin-left: -15px;
         padding-top: 0.2rem;
         padding-bottom: 0.4rem;
-        border-bottom: 1px solid #6d757d;
 
         .progress {
             margin-top: 0.3rem;
