@@ -65,6 +65,9 @@ export default {
      * Select file
      */
     selectAction() {
+      if (this.multiSelect) {
+        this.$store.state.fm.fileCallback(this.selectedItems.map(item => item.path))
+      }
       // file callback
       this.$store.dispatch('fm/url', {
         disk: this.selectedDisk,
