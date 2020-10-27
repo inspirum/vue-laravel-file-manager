@@ -65,23 +65,25 @@ export default {
      * Select file
      */
     selectAction() {
-      const urls = this.selectedItems.map((item) => {
-        this.$store.dispatch('fm/url', {
+      let urls = [];
+
+      Promise.all(this.selectedItems.map((item) => {
+        return this.$store.dispatch('fm/url', {
           disk: this.selectedDisk,
           path: item.path,
         }).then((response) => {
           if (response.data.result.status === 'success') {
-            return response.data.url;
+            urls.push(response.data.url);
           }
         })
-      }).filter(item => item !== undefined);
-
-      // file callback
-      if (this.multiSelect) {
-        this.$store.state.fm.fileCallback(urls)
-      } else {
-        this.$store.state.fm.fileCallback(urls[0])
-      }
+      })).then(() => {
+        // file callback
+        if (this.multiSelect) {
+          this.$store.state.fm.fileCallback(urls)
+        } else {
+          this.$store.state.fm.fileCallback(urls[0])
+        }
+      })
     },
 
     /**
