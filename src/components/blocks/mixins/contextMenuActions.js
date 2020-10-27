@@ -65,6 +65,12 @@ export default {
      * Select file
      */
     selectAction() {
+      // optimize speed, inspishop/admin do not need URL only path
+      if (this.multiSelect) {
+        this.$store.state.fm.fileCallback(this.selectedItems.map(item => item.path))
+        return;
+      }
+
       let urls = [];
 
       Promise.all(this.selectedItems.map((item) => {
