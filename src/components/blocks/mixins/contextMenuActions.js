@@ -65,18 +65,23 @@ export default {
      * Select file
      */
     selectAction() {
-      if (this.multiSelect) {
-        this.$store.state.fm.fileCallback(this.selectedItems.map(item => item.path))
-      }
+      const urls = this.selectedItems.map((item) => {
+        this.$store.dispatch('fm/url', {
+          disk: this.selectedDisk,
+          path: item.path,
+        }).then((response) => {
+          if (response.data.result.status === 'success') {
+            return response.data.url;
+          }
+        })
+      }).filter(item => item !== undefined);
+
       // file callback
-      this.$store.dispatch('fm/url', {
-        disk: this.selectedDisk,
-        path: this.selectedItems[0].path,
-      }).then((response) => {
-        if (response.data.result.status === 'success') {
-          this.$store.state.fm.fileCallback(response.data.url);
-        }
-      });
+      if (this.multiSelect) {
+        this.$store.state.fm.fileCallback(urls)
+      } else {
+        this.$store.state.fm.fileCallback(urls[0])
+      }
     },
 
     /**
